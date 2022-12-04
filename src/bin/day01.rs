@@ -31,5 +31,8 @@ pub fn solve(data: String) -> Solution {
 
 fn main() {
     let args = Args::parse();
-    println!("{}", solve(read_input(1, args)));
+    match read_input(1, args) {
+        Ok(data) => println!("{}", solve(data)),
+        Err(e) => eprintln!("Failed to read input file. {}", e),
+    };
 }

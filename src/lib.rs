@@ -51,7 +51,7 @@ pub struct Args {
     pub input_file: Option<PathBuf>,
 }
 
-pub fn read_input(day: usize, args: Args) -> String {
+pub fn read_input(day: usize, args: Args) -> Result<String, std::io::Error> {
     let file = match args.input_file {
         Some(filename) => filename,
         None => PathBuf::from(format!(
@@ -63,5 +63,5 @@ pub fn read_input(day: usize, args: Args) -> String {
             }
         )),
     };
-    std::fs::read_to_string(file).unwrap()
+    std::fs::read_to_string(file)
 }
