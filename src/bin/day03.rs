@@ -27,6 +27,7 @@ fn find_duplicated_item(bag: &str) -> Option<char> {
     }
     None
 }
+
 fn solve_part_a(data: String) -> Option<u32> {
     Some(
         data.lines()
