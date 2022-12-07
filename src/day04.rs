@@ -2,7 +2,7 @@ use aoc2022::{solution, Solution, Solver};
 
 fn parse_group(group: &str) -> (u32, u32) {
     group
-        .split_once("-")
+        .split_once('-')
         .map(|v| (v.0.parse().unwrap(), v.1.parse().unwrap()))
         .unwrap()
 }
@@ -22,7 +22,7 @@ struct Range {
 impl Line {
     fn from_string(input: &str) -> Line {
         input
-            .split_once(",")
+            .split_once(',')
             .map(|(left, right)| (parse_group(left), parse_group(right)))
             .unwrap()
             .into()
@@ -41,10 +41,7 @@ impl Line {
 impl From<(u32, u32)> for Range {
     fn from(data: (u32, u32)) -> Range {
         let (start, end) = data;
-        Range {
-            start: start,
-            end: end,
-        }
+        Range { start, end }
     }
 }
 impl From<((u32, u32), (u32, u32))> for Line {
@@ -57,9 +54,9 @@ impl From<((u32, u32), (u32, u32))> for Line {
     }
 }
 
-fn solve_part_a(data: &Vec<Line>) -> Option<i32> {
+fn solve_part_a(data: &[Line]) -> Option<i32> {
     Some(
-        data.into_iter()
+        data.iter()
             .filter(|line| line.parts_are_subset())
             .count()
             .try_into()
@@ -67,9 +64,9 @@ fn solve_part_a(data: &Vec<Line>) -> Option<i32> {
     )
 }
 
-fn solve_part_b(data: &Vec<Line>) -> Option<u32> {
+fn solve_part_b(data: &[Line]) -> Option<u32> {
     Some(
-        data.into_iter()
+        data.iter()
             .filter(|line| line.parts_overlap())
             .count()
             .try_into()

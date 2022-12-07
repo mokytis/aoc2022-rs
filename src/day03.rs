@@ -13,14 +13,12 @@ fn priority(c: char) -> Option<u32> {
 
 fn find_duplicated_item(bag: &str) -> Option<char> {
     let mut comp_1: HashSet<char> = HashSet::new();
-    let mut i = 0;
-    for c in bag.chars() {
+    for (i, c) in bag.chars().enumerate() {
         if i < bag.len() / 2 {
             comp_1.insert(c);
         } else if comp_1.contains(&c) {
             return Some(c);
         }
-        i += 1
     }
     None
 }
@@ -46,9 +44,9 @@ fn solve_part_b(data: String) -> Option<u32> {
                 let bag_a = lines[0].chars().collect::<HashSet<char>>();
                 let bag_b = lines[1]
                     .chars()
-                    .filter(|c| bag_a.contains(&c))
+                    .filter(|c| bag_a.contains(c))
                     .collect::<HashSet<char>>();
-                lines[2].chars().filter(|c| bag_b.contains(&c)).next()
+                lines[2].chars().find(|c| bag_b.contains(c))
             })
             .collect::<Option<Vec<char>>>()?
             .into_iter()
