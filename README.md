@@ -9,7 +9,7 @@ Challenge `day03` requires the nightly toolchain for `.array_chunks()`.
 
 ```bash
 $ rustup toolchain install nightly
-$ cargo +nightly build --release
+$ cargo build --release
 $ ./targets/release/day03
 ```
 
