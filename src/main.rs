@@ -4,6 +4,7 @@ mod day02;
 mod day03;
 mod day04;
 mod day05;
+mod day06;
 
 use aoc2022::Args;
 use clap::Parser;
@@ -16,6 +17,7 @@ fn main() {
         day03::make_solution(),
         day04::make_solution(),
         day05::make_solution(),
+        day06::make_solution(),
     ];
 
     match args.day {
