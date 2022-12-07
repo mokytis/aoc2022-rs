@@ -1,5 +1,4 @@
-use aoc2022::{read_input, solution, Args, Solution};
-use clap::Parser;
+use aoc2022::{solution, Solution, Solver};
 
 fn get_elves(data: String) -> Vec<i32> {
     let mut elves = vec![];
@@ -29,10 +28,9 @@ pub fn solve(data: String) -> Solution {
     solution!(solve_part_a(&elves), solve_part_b(&elves), 1)
 }
 
-fn main() {
-    let args = Args::parse();
-    match read_input(1, args) {
-        Ok(data) => println!("{}", solve(data)),
-        Err(e) => eprintln!("Failed to read input file. {}", e),
-    };
+pub fn make_solution() -> Solver {
+    Solver {
+        day: 1,
+        solver: solve,
+    }
 }

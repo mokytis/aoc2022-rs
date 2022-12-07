@@ -1,7 +1,4 @@
-#![feature(iter_array_chunks)]
-
-use aoc2022::{read_input, solution, Args, Solution};
-use clap::Parser;
+use aoc2022::{solution, Solution, Solver};
 use std::collections::HashSet;
 
 fn priority(c: char) -> Option<u32> {
@@ -66,10 +63,9 @@ pub fn solve(data: String) -> Solution {
     solution!(solve_part_a(data.clone()), solve_part_b(data), 3)
 }
 
-fn main() {
-    let args = Args::parse();
-    match read_input(3, args) {
-        Ok(data) => println!("{}", solve(data)),
-        Err(e) => eprintln!("Failed to read input file. {}", e),
-    };
+pub fn make_solution() -> Solver {
+    Solver {
+        day: 3,
+        solver: solve,
+    }
 }

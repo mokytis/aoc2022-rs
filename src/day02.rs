@@ -1,5 +1,4 @@
-use aoc2022::{read_input, solution, Args, Solution};
-use clap::Parser;
+use aoc2022::{solution, Solution, Solver};
 
 #[derive(Debug, PartialEq, Clone)]
 enum Shape {
@@ -112,7 +111,7 @@ fn parse_data_and_play_games(parser: fn(&str) -> Result<Round, &str>, data: Stri
     match rounds {
         Ok(r) => Some(r.iter().map(|round| round.score()).sum()),
         Err(e) => {
-            eprintln!("{}", e);
+            eprintln!("{e}");
             None
         }
     }
@@ -130,10 +129,9 @@ pub fn solve(data: String) -> Solution {
     solution!(solve_part_a(data.clone()), solve_part_b(data), 2)
 }
 
-fn main() {
-    let args = Args::parse();
-    match read_input(2, args) {
-        Ok(data) => println!("{}", solve(data)),
-        Err(e) => eprintln!("Failed to read input file. {}", e),
-    };
+pub fn make_solution() -> Solver {
+    Solver {
+        day: 2,
+        solver: solve,
+    }
 }

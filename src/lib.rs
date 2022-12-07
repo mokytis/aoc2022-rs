@@ -7,6 +7,20 @@ pub struct Solution {
     pub part_b: Option<String>,
 }
 
+pub struct Solver {
+    pub day: usize,
+    pub solver: fn(String) -> Solution,
+}
+
+impl Solver {
+    pub fn solve(&self, test_data: bool) {
+        match read_input(self.day, test_data) {
+            Ok(data) => println!("{}", (self.solver)(data)),
+            Err(e) => eprintln!("Failed to read input file. {e}"),
+        };
+    }
+}
+
 #[macro_export]
 macro_rules! solution {
     ($a:expr,$b:expr, $d:expr) => {{
@@ -49,19 +63,18 @@ pub struct Args {
     pub test_data: bool,
     #[arg(short, long, help = "Use test data file")]
     pub input_file: Option<PathBuf>,
+    #[arg(short, long, help = "Just run one day")]
+    pub day: Option<usize>,
 }
 
-pub fn read_input(day: usize, args: Args) -> Result<String, std::io::Error> {
-    let file = match args.input_file {
-        Some(filename) => filename,
-        None => PathBuf::from(format!(
-            "./inputs/day{:0>2}{}.txt",
-            day,
-            match args.test_data {
-                true => "-test",
-                false => "",
-            }
-        )),
-    };
+pub fn read_input(day: usize, use_test_data: bool) -> Result<String, std::io::Error> {
+    let file = PathBuf::from(format!(
+        "./inputs/day{:0>2}{}.txt",
+        day,
+        match use_test_data {
+            true => "-test",
+            false => "",
+        }
+    ));
     std::fs::read_to_string(file)
 }

@@ -1,5 +1,4 @@
-use aoc2022::{read_input, solution, Args, Solution};
-use clap::Parser;
+use aoc2022::{solution, Solution, Solver};
 
 #[derive(Clone)]
 struct Stack {
@@ -122,10 +121,9 @@ pub fn solve(data: String) -> Solution {
     )
 }
 
-fn main() {
-    let args = Args::parse();
-    match read_input(5, args) {
-        Ok(data) => println!("{}", solve(data)),
-        Err(e) => eprintln!("Failed to read input file. {}", e),
-    };
+pub fn make_solution() -> Solver {
+    Solver {
+        day: 5,
+        solver: solve,
+    }
 }

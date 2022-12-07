@@ -1,5 +1,4 @@
-use aoc2022::{read_input, solution, Args, Solution};
-use clap::Parser;
+use aoc2022::{solution, Solution, Solver};
 
 fn parse_group(group: &str) -> (u32, u32) {
     group
@@ -83,10 +82,9 @@ pub fn solve(data: String) -> Solution {
     solution!(solve_part_a(&lines), solve_part_b(&lines), 4)
 }
 
-fn main() {
-    let args = Args::parse();
-    match read_input(4, args) {
-        Ok(data) => println!("{}", solve(data)),
-        Err(e) => eprintln!("Failed to read input file. {}", e),
-    };
+pub fn make_solution() -> Solver {
+    Solver {
+        day: 4,
+        solver: solve,
+    }
 }

@@ -10,7 +10,11 @@ Challenge `day03` requires the nightly toolchain for `.array_chunks()`.
 ```bash
 $ rustup toolchain install nightly
 $ cargo build --release
-$ ./targets/release/day03
+$ ./targets/release/aoc2022rs
+$ cargo run --release -- --help
+$ cargo run --release -- --day 2
+$ ./targets/release/aoc2022rs -day 4
+$ ./targets/release/aoc2022rs --test-data
 ```
 
 ## Inputs
@@ -20,4 +24,4 @@ test input should be at `./inputs/day03-test.txt` and the main challenge input
 `./inputs/day03.txt`.
 
 When running a binary, `--test-data` can be used to run the solution against
-the test data, and `--input-file FILENAME` to specify an input file.
+the test data.
