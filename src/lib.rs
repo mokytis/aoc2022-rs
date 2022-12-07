@@ -2,7 +2,6 @@ use clap::Parser;
 use std::path::PathBuf;
 
 pub struct Solution {
-    pub day: usize,
     pub part_a: Option<String>,
     pub part_b: Option<String>,
 }
@@ -14,16 +13,18 @@ pub struct Solver {
 
 impl Solver {
     pub fn solve(&self, test_data: bool) {
+        println!("= Day {} =", self.day);
         match read_input(self.day, test_data) {
             Ok(data) => println!("{}", (self.solver)(data)),
             Err(e) => eprintln!("Failed to read input file. {e}"),
         };
+        println!()
     }
 }
 
 #[macro_export]
 macro_rules! solution {
-    ($a:expr,$b:expr, $d:expr) => {{
+    ($a:expr,$b:expr) => {{
         Solution {
             part_a: match $a {
                 Some(a) => Some(a.to_string()),
@@ -33,7 +34,6 @@ macro_rules! solution {
                 Some(b) => Some(b.to_string()),
                 None => None,
             },
-            day: $d,
         }
     }};
 }
@@ -48,11 +48,7 @@ impl std::fmt::Display for Solution {
             Some(value) => value,
             None => "Unsolved",
         };
-        write!(
-            f,
-            "Day {}:\n  Part A: {}\n  Part B: {}",
-            self.day, part_a, part_b,
-        )
+        write!(f, "Part A: {part_a}\nPart B: {part_b}")
     }
 }
 

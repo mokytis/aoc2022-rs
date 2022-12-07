@@ -25,7 +25,7 @@ fn solve_part_b(elves: &[i32]) -> Option<i32> {
 
 pub fn solve(data: String) -> Solution {
     let elves = get_elves(data);
-    solution!(solve_part_a(&elves), solve_part_b(&elves), 1)
+    solution!(solve_part_a(&elves), solve_part_b(&elves))
 }
 
 pub fn make_solution() -> Solver {

@@ -58,7 +58,7 @@ fn solve_part_b(data: String) -> Option<u32> {
 }
 
 pub fn solve(data: String) -> Solution {
-    solution!(solve_part_a(data.clone()), solve_part_b(data), 3)
+    solution!(solve_part_a(data.clone()), solve_part_b(data))
 }
 
 pub fn make_solution() -> Solver {

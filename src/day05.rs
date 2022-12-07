@@ -116,8 +116,7 @@ pub fn solve(data: String) -> Solution {
 
     solution!(
         solve_part_a(stacks.clone(), &moves),
-        solve_part_b(stacks, &moves),
-        5
+        solve_part_b(stacks, &moves)
     )
 }
 

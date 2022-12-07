@@ -76,7 +76,7 @@ fn solve_part_b(data: &[Line]) -> Option<u32> {
 
 pub fn solve(data: String) -> Solution {
     let lines = data.lines().map(Line::from_string).collect::<Vec<Line>>();
-    solution!(solve_part_a(&lines), solve_part_b(&lines), 4)
+    solution!(solve_part_a(&lines), solve_part_b(&lines))
 }
 
 pub fn make_solution() -> Solver {

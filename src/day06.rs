@@ -24,7 +24,7 @@ fn solve_part_b(data: &str) -> Option<usize> {
 }
 
 pub fn solve(data: String) -> Solution {
-    solution!(solve_part_a(&data), solve_part_b(&data), 5)
+    solution!(solve_part_a(&data), solve_part_b(&data))
 }
 
 pub fn make_solution() -> Solver {
