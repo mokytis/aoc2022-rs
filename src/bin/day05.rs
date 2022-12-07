@@ -53,7 +53,7 @@ impl Move {
 fn solve_part_a(mut stacks: Vec<Stack>, moves: &Vec<Move>) -> Option<String> {
     for m in moves {
         for _ in 0..m.amount {
-            let value = stacks[m.source].crates.pop().unwrap();
+            let value = stacks[m.source].crates.pop()?;
             stacks[m.destination].crates.push(value)
         }
     }
@@ -70,11 +70,11 @@ fn solve_part_b(mut stacks: Vec<Stack>, moves: &Vec<Move>) -> Option<String> {
     for m in moves {
         let mut temp: Vec<char> = vec![];
         for _ in 0..m.amount {
-            let value = stacks[m.source].crates.pop().unwrap();
+            let value = stacks[m.source].crates.pop()?;
             temp.push(value);
         }
         while !temp.is_empty() {
-            stacks[m.destination].crates.push(temp.pop().unwrap());
+            stacks[m.destination].crates.push(temp.pop()?);
         }
     }
 
