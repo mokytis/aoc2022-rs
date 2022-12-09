@@ -1,15 +1,13 @@
-use memmap::Mmap;
 use std::collections::HashSet;
-use std::fs::File;
+use std::path::PathBuf;
 
 fn main() {
-    let file = File::open("./inputs/i06.txt").expect("failed to open the file");
-
-    let mmap = unsafe { Mmap::map(&file).expect("failed to map the file") };
-
     println!(
         "{}",
-        mmap.windows(60)
+        std::fs::read_to_string(PathBuf::from("./inputs/i06.txt"))
+            .unwrap()
+            .as_bytes()
+            .windows(60)
             .enumerate()
             .find(|(_, slice)| {
                 let set = slice.iter().collect::<HashSet<&u8>>();
